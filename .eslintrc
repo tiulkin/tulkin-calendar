@@ -1,0 +1,139 @@
+{
+    // Don't use parent config
+    "root": true,
+    "extends": ["airbnb", "prettier", "prettier/react"],
+    "rules": {
+        // Every dependency is dev dependency in frontend
+        "import/no-extraneous-dependencies": [
+            "error",
+            { "devDependencies": true, "optionalDependencies": true, "peerDependencies": true }
+        ],
+
+        "no-use-before-define": "off",
+        "no-console": ["error", { "allow": ["warn", "error", "info", "groupCollapsed", "groupEnd"] }],
+        "capitalized-comments": ["error", "always", { "ignorePattern": "tslint|webpackChunkName" }],
+        "@typescript-eslint/no-use-before-define": "off"
+    },
+    "overrides": [
+        {
+            "files": ["**/*.ts", "**/*.tsx"],
+            "settings": {
+                "import/resolver": {
+                    "node": {
+                        "extensions": [".ts", ".tsx", ".d.ts", ".js"]
+                    }
+                }
+            },
+            "plugins": ["@typescript-eslint", "react-hooks"],
+            "parser": "@typescript-eslint/parser",
+            "parserOptions": {
+                "project": "./tsconfig.json"
+            },
+            "extends": ["plugin:@typescript-eslint/recommended", "prettier/@typescript-eslint"],
+            "rules": {
+                "no-shadow": "off",
+                "@typescript-eslint/no-shadow": ["error"],
+                "@typescript-eslint/no-use-before-define": "off",
+                "no-nested-ternary": "off",
+                "no-unused-expressions": "off",
+                "@typescript-eslint/no-unused-expressions": "error",
+                // Empty interfaces for Props are convenient
+                "@typescript-eslint/no-empty-interface": "off",
+                // TODO: Reconsider
+                "@typescript-eslint/no-empty-function": "off",
+                // https://github.com/eslint/typescript-eslint-parser/issues/437
+                "no-undef": "off",
+                // Enable React Hooks rules
+                "react-hooks/rules-of-hooks": "error",
+                "react-hooks/exhaustive-deps": "error",
+                // Allow the use of indices as keys in static lists
+                "react/no-array-index-key": "off",
+                // Allow JSX in tsx files
+                "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+                // Skip undeclared - no need in ts
+                "react/prop-types": [
+                    "error",
+                    {
+                        "ignore": [],
+                        "customValidators": [],
+                        "skipUndeclared": true
+                    }
+                ],
+                // Default export is discouraged
+                "import/prefer-default-export": "off",
+                "import/no-default-export": "error",
+                // Function overrides are fine
+                "import/export": "warn",
+                "import/extensions": "off",
+                "react/jsx-props-no-spreading": "off",
+                // Seems fine in some cases
+                "react/destructuring-assignment": "warn",
+                // TODO: Ensure consistency between member-ordering and sort-comp
+                "@typescript-eslint/member-ordering": [
+                    "error",
+                    {
+                        "default": [
+                            "public-static-field",
+                            "protected-static-field",
+                            "private-static-field",
+                            "public-static-method",
+                            "protected-static-method",
+                            "private-static-method",
+                            "public-instance-field",
+                            "protected-instance-field",
+                            "private-instance-field",
+                            "public-constructor",
+                            "protected-constructor",
+                            "private-constructor",
+                            "public-instance-method",
+                            "protected-instance-method",
+                            "private-instance-method"
+                        ]
+                    }
+                ],
+                // Move rendering right after lifecycle
+                "react/sort-comp": [
+                    "error",
+                    {
+                        "order": [
+                            "static-methods",
+                            "instance-variables",
+                            "lifecycle",
+                            "rendering",
+                            "/^on.+$/",
+                            "getters",
+                            "setters",
+                            "/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/",
+                            "instance-methods",
+                            "everything-else"
+                        ],
+                        "groups": {
+                            "lifecycle": [
+                                "displayName",
+                                "propTypes",
+                                "contextTypes",
+                                "childContextTypes",
+                                "mixins",
+                                "statics",
+                                "defaultProps",
+                                "constructor",
+                                "getDefaultProps",
+                                "getInitialState",
+                                "state",
+                                "getChildContext",
+                                "componentWillMount",
+                                "componentDidMount",
+                                "componentWillReceiveProps",
+                                "shouldComponentUpdate",
+                                "componentWillUpdate",
+                                "componentDidUpdate",
+                                "componentWillUnmount"
+                            ],
+                            "rendering": ["/^render.+$/", "render"]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

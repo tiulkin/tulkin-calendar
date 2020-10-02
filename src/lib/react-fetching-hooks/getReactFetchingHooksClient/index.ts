@@ -1,0 +1,1 @@
+export { getReactFetchingHooksClient } from './getReactFetchingHooksClient';
