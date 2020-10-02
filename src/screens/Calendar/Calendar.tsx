@@ -22,7 +22,6 @@ const Calendar: React.FC<Route> = ({ navigation }) => {
             {data?.length ? (
                 <CalendarList
                     firstDay={1}
-                    displayLoadingIndicator
                     pastScrollRange={new Date().getMonth()}
                     futureScrollRange={11 - new Date().getMonth()}
                     dayComponent={({ date: value }) => {
