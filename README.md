@@ -6,7 +6,7 @@ git clone git@github.com:tiulkin/tulkin-calendar.git
 cd tulkin-calendar
 yarn i
 
-Лополнительно для IOS:
+Дополнительно для IOS:
 yarn pods
 
 Запуск:
