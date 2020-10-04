@@ -4,7 +4,7 @@ React-native demo
 Установка:
 git clone git@github.com:tiulkin/tulkin-calendar.git    
 cd tulkin-calendar
-yarn I
+yarn i
 
 Лополнительно для IOS
 yarn pods
